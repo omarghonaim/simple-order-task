@@ -1,5 +1,5 @@
 <?php
-$pdo = require_once '../config/database.php'; // ✅ Get $pdo from config
+$pdo = require_once '../config/database.php';
 require_once '../includes/Product.php';
 require_once '../includes/Order.php';
 // require_once '../templates/header.php';
@@ -10,7 +10,7 @@ $products = $productModel->getAllProducts();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $order = new Order($pdo);
-    $orderId = $order->createOrder($_POST['products']); // array: [product_id => qty]
+    $orderId = $order->createOrder($_POST['products']); 
 
     header("Location: checkout.php?order_id=" . $orderId);
     exit;
